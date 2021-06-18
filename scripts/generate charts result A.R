@@ -152,7 +152,7 @@ data_result_a %>%
   labs(
     title = "Child (aged 0-4) Nutrition in South Asia",
     subtitle = "Number of malnourised children in <span style = 'color:#ff010d;'>India</span> __is equal to 2.83 times__ the sum of malnourised children <br>in <span style = 'color:#8eb584;'>Maldives</span>, <span style = 'color:#8eb584;'>Nepal</span>, <span style = 'color:#8eb584;'>Bhutan</span>, <span style = 'color:#ae9613;'>Pakistan</span> and <span style = 'color:#9ca442'>Bangladesh</span>",
-    y = "School age children not attending school (%)",
+    y = "Malnourised Children (%)",
     x = NULL
   )+
   theme(
