@@ -10,6 +10,8 @@ library(scales)
 library(waffle)
 library(ggrepel)
 library(ggtext)
+library(cowplot)
+
 # sourcing data -----------------------------------------------------------
 
 source(here("scripts/generate data.R"))
@@ -72,7 +74,7 @@ data_result_a %>%
 
 ggsave(
   here("charts/result_a_chart_sch_attn_perc_notattn.png"),
-  device = "png",width = 8,height = 8,units = "in")
+  device = "png",width = 12,height = 8,units = "in")
 
 ### Percentage of Population living with a child who is not attending school
 
@@ -108,7 +110,7 @@ data_result_a %>%
 
 ggsave(
   here("charts/result_a_chart_perc_pop_living_with_ch_not_sch_attn.png"),
-  device = "png",width = 8,height = 8,units = "in")
+  device = "png",width = 12,height = 8,units = "in")
 
 
 ### Malnourished children
@@ -169,4 +171,22 @@ data_result_a %>%
 
 ggsave(
   here("charts/result_a_chart_child_nutrition.png"),
-  device = "png",width = 8,height = 8,units = "in")
+  device = "png",width = 12,height = 8,units = "in")
+
+
+ggdraw()+
+  draw_image(here("charts/result_a_chart_sch_attn_perc_notattn.png")) -> c1
+
+
+ggdraw()+
+  draw_image(here("charts/result_a_chart_perc_pop_living_with_ch_not_sch_attn.png")) -> c2
+
+ggdraw()+
+  draw_image(here("charts/result_a_chart_child_nutrition.png")) -> c3
+
+
+plot_grid(c1,c2,c3,align = "v",ncol = 1)
+
+ggsave(here("charts/results_a_col_charts"),
+       device = "png",
+       width = 21,height = 29.7,units = "cm")
