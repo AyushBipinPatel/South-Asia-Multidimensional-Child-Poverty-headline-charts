@@ -267,7 +267,29 @@ plot_grid(w1,w2,align = "v",ncol = 1) -> grid_waffle_charts
 plot_grid(grid_cols_charts,
           grid_waffle_charts,
           ncol = 2,
-          rel_widths = c(2,1))
+          rel_widths = c(2,1)) -> result_a_chart
 
-grid_cols_charts + grid_waffle_charts+
-  plot_layout(widths = c(2,1))
+title <- ggdraw() + 
+  draw_label(
+    "Age-specific Child Deprivation Levels in Nutrition and School Attendance ",
+    fontface = 'bold',
+    x = 0,
+    hjust = 0
+  ) +
+  theme(
+    # add margin on the left of the drawing canvas,
+    # so title is aligned with left edge of first plot
+    plot.margin = margin(0, 0, 0, 7)
+  )
+plot_grid(
+  title, result_a_chart,
+  ncol = 1,
+  # rel_heights values control vertical title margins
+  rel_heights = c(0.1, 1)
+)
+
+ggsave(here("charts/summary_chart_result_a.png"),
+       device = "png",width = 12,height = 15, units = "in")
+
+ggsave(here("charts/summary_chart_result_a.pdf"),
+       device = "pdf",width = 12,height = 15, units = "in")
