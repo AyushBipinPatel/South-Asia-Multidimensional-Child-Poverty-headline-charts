@@ -13,8 +13,8 @@ Following are the main findings /results from the paper[^1]:
 
 [^1]: The results are reproduced here verbatim from the paper
 
-  A. Age-specific Child Deprivation Levels in Nutrition and School Attendance
-  B. What Proportion of Deprived Children Live in Households That Are MPI Poor?
-  C. Gender Equity Among Poor and Deprived Children
-  D. What Proportion of Poor and Deprived Children Experience Intrahousehold Inequalities?
+  A. Age-specific Child Deprivation Levels in Nutrition and School Attendance  
+  B. What Proportion of Deprived Children Live in Households That Are MPI Poor?  
+  C. Gender Equity Among Poor and Deprived Children  
+  D. What Proportion of Poor and Deprived Children Experience Intrahousehold Inequalities?  
   E. Pioneer Children
