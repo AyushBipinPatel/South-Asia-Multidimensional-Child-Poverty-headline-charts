@@ -187,6 +187,6 @@ ggdraw()+
 
 plot_grid(c1,c2,c3,align = "v",ncol = 1)
 
-ggsave(here("charts/results_a_col_charts"),
+ggsave(here("charts/results_a_col_charts.png"),
        device = "png",
        width = 21,height = 29.7,units = "cm")
