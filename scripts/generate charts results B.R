@@ -268,4 +268,36 @@ ggsave(here("charts/ch_lives_in_mpi_poor_hh.png"),
 ggdraw()+
   draw_image(here("charts/ch_lives_in_mpi_poor_hh.png")) -> w2
 
-plot_grid(w1,w2,align = "h",ncol = 2) -> grid_waffle_charts
+plot_grid(w1,w2,align = "v",ncol = 1) -> grid_waffle_charts
+
+# putting together the summary chart
+
+plot_grid(grid_cols_charts,
+          grid_waffle_charts,
+          ncol = 2,
+          rel_widths = c(2,1)) -> result_b_chart
+
+title <- ggdraw() + 
+  draw_label(
+    "What Proportion of Deprived Children Live in Households That Are MPI Poor?",
+    fontface = 'bold',
+    x = 0,
+    hjust = 0
+  ) +
+  theme(
+    # add margin on the left of the drawing canvas,
+    # so title is aligned with left edge of first plot
+    plot.margin = margin(0, 0, 0, 7)
+  )
+plot_grid(
+  title, result_b_chart,
+  ncol = 1,
+  # rel_heights values control vertical title margins
+  rel_heights = c(0.1, 1)
+)
+
+ggsave(here("charts/summary_chart_result_b.png"),
+       device = "png",width = 12,height = 15, units = "in")
+
+ggsave(here("charts/summary_chart_result_b.pdf"),
+       device = "pdf",width = 12,height = 15, units = "in")
