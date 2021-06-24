@@ -179,3 +179,93 @@ data_result_b %>%
 ggsave(
   here("charts/result_b_chart_child_mpi_poor_and_malnourished.png"),
   device = "png",width = 14,height = 8,units = "in")
+
+
+# putting the column charts together --------------------------------------
+
+
+ggdraw()+
+  draw_image(here("charts/result_b_chart_sch_age_mpi_poor_perc_notattn.png")) -> c1
+
+
+ggdraw()+
+  draw_image(here("charts/result_b_chart_sch_age_not_attn_lives_mpi_poor_hh.png")) -> c2
+
+ggdraw()+
+  draw_image(here("charts/result_b_chart_child_mpi_poor_and_malnourished.png")) -> c3
+
+
+plot_grid(c1,c2,c3,align = "v",ncol = 1) -> grid_cols_charts
+
+ggsave(here("charts/results_b_col_charts.png"),
+       device = "png",
+       width = 21,height = 29.7,units = "cm")
+
+# waffles for results B
+
+tibble(
+  part = c("Lives with Out of School child","Does not live with Out of School child"),
+  val  = c(1,9)
+) %>% 
+  ggplot(aes(fill = part, values= val),size = 0.25)+
+  geom_waffle(n_rows = 3,
+              colour = "white",size = 10)+
+  scale_fill_manual(values = c("#8eb584","#ff010d"),name = "A person in South Asia")+
+  guides(fill = guide_legend(title.position = "top"))+
+  labs(
+    title = "<span style = 'color:#ff010d'> One </span>in ten people in South Asia share their household with a<br>out of school child."
+  )+
+  theme(
+    plot.background = element_rect(fill = "#ffffff"),
+    panel.background = element_blank(),
+    axis.text = element_blank(),
+    axis.ticks = element_blank(),
+    plot.title.position = "plot",
+    plot.title = element_markdown(),
+    plot.subtitle = element_markdown(size = 12),
+    legend.background = element_blank(),
+    legend.position = "top",
+    
+  ) -> waffle_lives_with_out_sch_ch 
+
+ggsave(here("charts/waffle_lives_with_out_sch_ch.png"),
+       device = "png",width = 6, height = 6, units = "in")
+
+
+ggdraw()+
+  draw_image(here("charts/waffle_lives_with_out_sch_ch.png")) -> w1
+
+
+tibble(
+  part = c("Lives in MPI poor household","Does not live in MPI poor household"),
+  val  = c(88,12)
+) %>% 
+  ggplot(aes(fill = part, values= val),size = 0.25)+
+  geom_waffle(n_rows = 10,
+              colour = "white",size = 10)+
+  scale_fill_manual(values = c("#8eb584","#ff010d"),name = "Our of School Child")+
+  guides(fill = guide_legend(title.position = "top"))+
+  labs(
+    title = "<span style = 'color:#ff010d'> 88% (32.3 million)</span> of out of school children live in MPI poor houeshold."
+  )+
+  theme(
+    plot.background = element_rect(fill = "#ffffff"),
+    panel.background = element_blank(),
+    axis.text = element_blank(),
+    axis.ticks = element_blank(),
+    plot.title.position = "plot",
+    plot.title = element_markdown(),
+    plot.subtitle = element_markdown(size = 12),
+    legend.background = element_blank(),
+    legend.position = "top",
+    
+  ) -> waffle_ch_lives_in_mpi_poor_hh
+
+ggsave(here("charts/ch_lives_in_mpi_poor_hh.png"),
+       device = "png",width = 6, height = 6, units = "in")
+
+
+ggdraw()+
+  draw_image(here("charts/ch_lives_in_mpi_poor_hh.png")) -> w2
+
+plot_grid(w1,w2,align = "h",ncol = 2) -> grid_waffle_charts
