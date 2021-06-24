@@ -82,3 +82,42 @@ ggsave(
 ### Percentage of school age children not attending school who live in MPI Poor HH
 
 
+
+data_result_b %>% 
+  mutate(
+    Country = fct_reorder(
+      as.factor(Country),
+      perc_sch_age_ch_not_attn_sch_live_mpi_poor_hh
+    )
+  ) %>% 
+  ggplot(aes(Country,perc_sch_age_ch_not_attn_sch_live_mpi_poor_hh))+
+  geom_col(fill = "#303960")+
+  geom_text(aes(label = paste(
+    perc_sch_age_ch_not_attn_sch_live_mpi_poor_hh,
+    "(%)"
+  )),
+  nudge_y = 1.5)+
+  coord_cartesian(ylim = c(0,100))+
+  labs(
+    title = "Out-of-School children in South Asia",
+    subtitle = "School age children not attending school who live in MPI poor households",
+    y = "School age children not attending school who live in MPI poor households (%)",
+    x = NULL
+  )+
+  theme(
+    panel.background = element_rect(fill = "#ffffff"),
+    panel.grid = element_line(colour = "grey"),
+    legend.position = c(0.5,.9),
+    legend.direction = "horizontal",
+    legend.background = element_rect(fill = NA),
+    plot.title.position = "plot",
+    plot.subtitle = element_markdown(size = 12),
+    
+  ) -> chart_sch_age_not_attn_lives_mpi_poor_hh
+
+ggsave(
+  here("charts/result_b_chart_sch_age_not_attn_lives_mpi_poor_hh.png"),
+  device = "png",width = 14,height = 8,units = "in")
+
+### Malnourished and MPI poor
+
