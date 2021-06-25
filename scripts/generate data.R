@@ -47,3 +47,23 @@ tibble(
   num_ch_04_maln = c(NA,5070224,18624,32250744,
                      285,792234,7296573)
 ) -> data_result_b
+
+
+# Gender Equity Among Poor and Deprived Children  ----------------------------------------------
+
+tibble(
+  Country = c("Afghanistan","Bangladesh",
+              "Bhutan", "India", "Maldives",
+              "Nepal", "Pakistan"),
+  boys_sh_age_mpi_poor_not_attn = c(24.8,12.1,8.7,
+                                    6.1,0.1,3.1,19.7),
+  
+  girls_sh_age_mpi_poor_not_attn = c(44.0,7.2,7.8,6.8,
+                                     0.1,6.0,27.2),
+  diff_stat_sig_95_more = c(T,T,F,T,F,T,T),
+  boy_ch_u5_mpi_poor_malnourisherd = c(NA,30.6,24.2,
+                                       27.6,0.6,25.5,26.6),
+  girl_ch_u5_mpi_poor_malnourisherd = c(NA,31.0,24.3,
+                                        27.8,0.7,27,27.8)
+) -> data_results_c
+
