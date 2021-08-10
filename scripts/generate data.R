@@ -67,3 +67,15 @@ tibble(
                                         27.8,0.7,27,27.8)
 ) -> data_results_c
 
+
+# Intrahousehold inequality -----------------------------------------------
+
+tibble(
+  Country = c("Afghanistan","Bangladesh",
+              "Bhutan", "India", "Maldives",
+              "Nepal", "Pakistan"),
+  perc_exp_sch_attn_intrhh = c(34.3,12.7,9.9,
+                               8.1,0.3,7.0,22.4),
+  perc_exp_ch_ntr_intrhh = c(NA,12.1,14.7,21.8,
+                             16.1,17.4,33.7)
+)-> data_results_d
